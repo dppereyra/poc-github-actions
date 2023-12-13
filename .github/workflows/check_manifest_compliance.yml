@@ -1,0 +1,22 @@
+name: Check manifest compliance
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-policy-checks:
+    permissions:
+      contents: read
+      actions: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: alexellis/setup-arkade@v2
+      - name: Install conftest
+        run: |
+          arkade system install conftest
+      - name: Check compliance to policies
+        run: |
+          conftest test -p ./tests/conftest_policies/ ./k8s_manifests/
