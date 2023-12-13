@@ -16,7 +16,7 @@ jobs:
       - uses: alexellis/setup-arkade@v3
       - uses: alexellis/arkade-get@master
         with:
-          conftest: 0.47.0
+          conftest: latest
       - name: Verify conftest cli tool is available
         run: |
           conftest -v
