@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: alexellis/setup-arkade@v2
+      - uses: alexellis/setup-arkade@v3
+      - uses: alexellis/arkade-get@master
         with:
           conftest: 0.47.0
       - name: Verify conftest cli tool is available
