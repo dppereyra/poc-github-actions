@@ -14,9 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: alexellis/setup-arkade@v2
-      - name: Install conftest
+        with:
+          conftest: 0.47.0
+      - name: Verify conftest cli tool is available
         run: |
-          arkade system install conftest
+          conftest -v
       - name: Check compliance to policies
         run: |
           conftest test -p ./tests/conftest_policies/ ./k8s_manifests/
